@@ -3,11 +3,13 @@ package camt.demo.service;
 import camt.demo.dao.EventDao;
 import camt.demo.entity.Event;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class EventServiceImpl implements EventService {
 
     final EventDao eventDao;
@@ -17,10 +19,7 @@ public class EventServiceImpl implements EventService {
         return eventDao.getEventSize();
     }
 
-    @Override
-    public Page<Event> getEvents(Integer pageSize, Integer page) {
-        return eventDao.getEvents(pageSize, page);
-    }
+
 
     @Override
     public Event getEvent(Long id) {
@@ -30,6 +29,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event save(Event event) {
         return eventDao.save(event);
+    }
+
+    @Override
+    public List<Event> getEvents() {
+        return eventDao.getEvents();
     }
 
 }
